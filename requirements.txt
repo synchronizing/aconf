@@ -1,0 +1,2 @@
+fs>=2.4.11
+namedtupled>=0.3.3
