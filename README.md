@@ -111,16 +111,14 @@ It would be reasonable to assume `conf()` performance is slower than `config()`.
 
 # Project
 
-This is the entirety of the project, which is inside `__init__.py`. Uses [`fs`](https://docs.pyfilesystem.org/en/latest/), [`pickle`](https://docs.python.org/3/library/pickle.html), and [`namedtuple`](https://docs.python.org/3/library/collections.html#collections.namedtuple):
+This is the entirety of the project, which is inside `__init__.py`. Uses [`namedtuple`](https://docs.python.org/3/library/collections.html#collections.namedtuple):
 
 ```python
-import fs, pickle, namedtupled
-
-mem = fs.open_fs("mem://")
+import namedtupled
 
 def make_config(**kwargs):
-    mem.writebytes("config.pkl", pickle.dumps(kwargs))
+    globals()["aconf"] = kwargs
 
-conf = lambda: namedtupled.map(pickle.loads(mem.readbytes("config.pkl")))
-config = lambda: pickle.loads(mem.readbytes("config.pkl"))
+conf = lambda: namedtupled.map(globals()["aconf"])
+config = lambda: globals()["aconf"]
 ```

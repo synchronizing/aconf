@@ -1,9 +1,8 @@
-import fs, pickle, namedtupled
-
-mem = fs.open_fs("mem://")
+__version__ = "1.0.1"
+import namedtupled
 
 def make_config(**kwargs):
-    mem.writebytes("config.pkl", pickle.dumps(kwargs))
+    globals()["aconf"] = kwargs
 
-conf = lambda: namedtupled.map(pickle.loads(mem.readbytes("config.pkl")))
-config = lambda: pickle.loads(mem.readbytes("config.pkl"))
+conf = lambda: namedtupled.map(globals()["aconf"])
+config = lambda: globals()["aconf"]

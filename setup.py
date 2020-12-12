@@ -1,5 +1,7 @@
 import setuptools
 
+from aconf import __version__
+
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
@@ -8,7 +10,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="aconf",
-    version="1.0.0",
+    version=__version__,
     author="Felipe Faria",
     description="Global memory-based configuration.",
     long_description=long_description,
