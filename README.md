@@ -103,11 +103,11 @@ print(example.arg)
 
 Absolutely no idea. I wrote this for small projects that I don't intend on releasing and so I have not bothered to benchmark it. If anyone runs the number it would be lovely if you reported either as an Issue, or directly by shooting a pull request with this portion of the `README.md` updated. The project in essence does the following:
 
-* `make_config(**kwargs)`: Pickles the `kwargs` dictionary and saves it to memory.
-* `config()`: Loads the pickled dictionary from memory.
-* `conf()`: Loads the pickled dictionary from memory and transforms it into `namedtuple`.
+* `make_config(**kwargs)`: Saves the `kwargs` dictionary and saves it to `globals()`.
+* `config()`: Loads the dictionary from `globals()`.
+* `conf()`: Loads the dictionary from `globals()` and transforms it into `namedtuple`.
 
-It would be reasonable to assume `conf()` performance is slower than `config()`. If I had to assume the largest performance drop is within the dumping and loading of pickled objects (even if from memory).
+It would be reasonable to assume `conf()` performance is slower than `config()`.
 
 # Project
 
